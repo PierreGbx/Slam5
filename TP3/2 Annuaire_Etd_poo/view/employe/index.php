@@ -17,7 +17,7 @@ if (!empty($data['notification'])) {
 			<th>Age</th>
 			<th>Age</th>
 			<th>Ville</th>
-			<th>Droits</th>
+			<th>Droit</th>
 		</tr>
 	</thead>
 	<tbody>
