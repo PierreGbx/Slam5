@@ -22,7 +22,10 @@ if (!empty($data['notification'])) {
 	</thead>
 	<tbody>
 		<?php
-		if ($data['employes']) {
+if ($data['employes']) {
+
+	if($_SESSION['Droit']==0){
+		
 			foreach ($data['employes'] as $k => $v) {
 			?>
 				<tr>
@@ -32,7 +35,42 @@ if (!empty($data['notification'])) {
 					<td><a href="mailto:<?php echo $v['email']; ?>"><?php echo $v['email']; ?></a></td>
 					<td><a href="tel:<?php echo $v['age']; ?>"><?php echo $v['age']; ?></a></td>
 					<td><a href="https://www.google.com/maps?q=<?php echo $v['ville']; ?>"><?php echo $v['ville']; ?></a></td>
-					<td><a href="?ctrl=employe&mth=show&id=<?php echo $v['id']; ?>"><?php echo $v['Droit']; ?></a></td>
+					<td>
+						<a href="?ctrl=employe&mth=show&id=<?php echo $v['id']; ?>">Lire |</a>
+					</td>
+				</tr>
+			<?php
+			}
+		}
+			elseif($_SESSION['Droit']==1){
+			foreach ($data['employes'] as $k => $v) {
+			?>
+				<tr>
+					<td><?php echo $k+1; ?></td>
+					<td><a href="?ctrl=employe&mth=show&id=<?php echo $v['id']; ?>"><?php echo $v['prenom']; ?></a></td>
+					<td><a href="?ctrl=employe&mth=show&id=<?php echo $v['id']; ?>"><?php echo $v['nom']; ?></a></td>
+					<td><a href="mailto:<?php echo $v['email']; ?>"><?php echo $v['email']; ?></a></td>
+					<td><a href="tel:<?php echo $v['age']; ?>"><?php echo $v['age']; ?></a></td>
+					<td><a href="https://www.google.com/maps?q=<?php echo $v['ville']; ?>"><?php echo $v['ville']; ?></a></td>
+					<td>
+						<a href="?ctrl=employe&mth=show&id=<?php echo $v['id']; ?>">| Lire |</a>
+						<a href="?ctrl=employe&mth=edit&id=<?php echo $v['id']; ?>"> Modifier |</a>
+					</td>
+				</tr>
+			<?php
+			}
+		} 
+
+		elseif($_SESSION['Droit']==2){
+			foreach ($data['employes'] as $k => $v) {
+			?>
+				<tr>
+					<td><?php echo $k+1; ?></td>
+					<td><a href="?ctrl=employe&mth=show&id=<?php echo $v['id']; ?>"><?php echo $v['prenom']; ?></a></td>
+					<td><a href="?ctrl=employe&mth=show&id=<?php echo $v['id']; ?>"><?php echo $v['nom']; ?></a></td>
+					<td><a href="mailto:<?php echo $v['email']; ?>"><?php echo $v['email']; ?></a></td>
+					<td><a href="tel:<?php echo $v['age']; ?>"><?php echo $v['age']; ?></a></td>
+					<td><a href="https://www.google.com/maps?q=<?php echo $v['ville']; ?>"><?php echo $v['ville']; ?></a></td>
 					<td>
 						<a href="?ctrl=employe&mth=show&id=<?php echo $v['id']; ?>">Lire |</a>
 						<a href="?ctrl=employe&mth=edit&id=<?php echo $v['id']; ?>">Modifier |</a>
@@ -41,7 +79,11 @@ if (!empty($data['notification'])) {
 				</tr>
 			<?php
 			}
-		} else {
+		} 
+	}
+
+
+		else {
 			?>
 			<tr>
 				<td colspan="6">Pas d'employé</td>

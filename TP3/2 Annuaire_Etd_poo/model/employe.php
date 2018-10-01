@@ -18,7 +18,7 @@ class employe extends ConnexionDB  {
 	{
 		$sql = $this->cnx->prepare("INSERT INTO employes (prenom,nom,email,age,ville,pass,droit) 
         VALUES (?,?,?,?,?,?,?)");
-		$sql->execute( array($empl['prenom'],$empl['nom'],$empl['email'],$empl['age'],$empl['ville'],$empl['pass'],$empl['droit']) );
+		$sql->execute( array($empl['prenom'],$empl['nom'],$empl['email'],$empl['age'],$empl['ville'],$empl['pass'],$empl['Droit']) );
 		return $sql->rowCount();
 	}
 
@@ -32,7 +32,7 @@ class employe extends ConnexionDB  {
 	}
 
 	public function indentification($empl){
-		$sql = $this->cnx->prepare('SELECT id, pass FROM employes WHERE email = ?');
+		$sql = $this->cnx->prepare('SELECT id, pass, Droit FROM employes WHERE email = ?');
 		$sql->execute(array($empl['email']));
 		return $sql->fetch();
 	}
