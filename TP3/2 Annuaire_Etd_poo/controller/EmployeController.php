@@ -123,6 +123,8 @@ class EmployeController {
 
         $_SESSION['email'] = $_POST['email'];
 
+        $_SESSION['Droit']=$identification['Droit'];
+
         echo "Bonjour ".$_POST['email']."Vous êtes connecté ! Vous allez être rédirigé vers la page d'acceuil";
 
     }

@@ -17,9 +17,9 @@
     <label>Mot de passe</label><br>
     <input type="password" name="pass" id="pass"><br>
     <label>Droit</label><br>
-    <select name="droit" id="droit"><option value="Utilisateur">Utilisateur</option>
-                                    <option value="Administrateur">Administrateur</option>
-                                    <option value="SuperAdministrateur">Super Administrateur</option>
+    <select name="Droit" id="Droit"><option value="0">Utilisateur</option>
+                                    <option value="1">Administrateur</option>
+                                    <option value="2">Super Administrateur</option>
     </select>
     <br><br>
     <input type="submit" name="submit" value="Ajouter">
